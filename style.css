@@ -19,6 +19,7 @@ nav {
     flex-wrap: wrap;
     background-color: #E02434;
     height: 100px;
+    z-index: 1000;
 }
 
 nav .logo {
@@ -123,3 +124,21 @@ nav ul li a:hover {
     width: 55%;
     transform: rotate(8deg);
 }
+
+.bg-folder,
+.c-folder,
+.id-badge {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.bg-folder.visible,
+.c-folder.visible,
+.id-badge.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.c-folder { transition-delay: 0.2s; }
+.id-badge { transition-delay: 0.4s; }
