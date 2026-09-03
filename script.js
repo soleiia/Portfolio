@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.bg-folder, .c-folder, .id-badge');
+    const tabs = document.querySelector('.tabs');
+    const btns = document.querySelectorAll('.button');
+    const articles = document.querySelectorAll('.content');
+tabs.addEventListener('click', (e) => {
+    const id = e.target.dataset.id;
+    if (id) {
+        btns.forEach(function(btn) {
+            btn.classList.remove('live');
+        });
+        e.target.classList.add('live');
+
+        articles.forEach(function(article) {
+            article.classList.remove('live');
+        });
+        document.getElementById(id).classList.add('live');
+    }
+});
 
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
