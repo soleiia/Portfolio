@@ -142,3 +142,71 @@ nav ul li a:hover {
 
 .c-folder { transition-delay: 0.2s; }
 .id-badge { transition-delay: 0.4s; }
+
+.About-Me {
+    text-align: center;
+    padding: 60px 5% 40px;
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: thin;
+    line-height: 1.2;
+    color: #E02434;
+    background-color: #FFFFFF;
+}
+
+.tabs {
+    background:#D9D9D9;
+    border-radius: 10px;
+    grid-template-rows: auto 1fr;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.button:nth-child(1) {
+    border-top-left-radius: 0.5rem;
+}
+
+.button:nth-child(3) {
+    border-top-right-radius: 0.5rem;
+}
+
+.button {
+    padding: 1rem;
+    border: none;
+    font-size: 1.2rem;
+    background: #D9D9D9;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    letter-spacing: 0.25rem;
+}
+
+.button:hover:not(.live) {
+    background: #E02434;
+    color: #FFFFFF;
+}
+
+.tabs-content {
+    padding: 2rem 1.5rem;
+}
+
+.content {
+    display: none;
+}
+
+.button.live {
+    background: #FD84BA;
+}
+
+.content.live {
+    display: block;
+}
+
+.About-Me {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+}
