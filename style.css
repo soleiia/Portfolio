@@ -143,6 +143,11 @@ nav ul li a:hover {
 .c-folder { transition-delay: 0.2s; }
 .id-badge { transition-delay: 0.4s; }
 
+.about-bg {
+    background-color: #FFFFFF;
+    padding: 40px 0%;
+}
+
 .About-Me {
     text-align: center;
     padding: 60px 5% 40px;
@@ -152,26 +157,20 @@ nav ul li a:hover {
     font-weight: thin;
     line-height: 1.2;
     color: #E02434;
-    background-color: #FFFFFF;
 }
 
 .tabs {
     background:#D9D9D9;
-    border-radius: 10px;
     grid-template-rows: auto 1fr;
+    max-width: 1100px;
+    margin: 0 auto;
+    border:#E02434 1.5px solid;
 }
 
 .btn-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-}
-
-.button:nth-child(1) {
-    border-top-left-radius: 0.5rem;
-}
-
-.button:nth-child(3) {
-    border-top-right-radius: 0.5rem;
+    border-bottom: 1.5px solid #E02434;
 }
 
 .button {
@@ -191,6 +190,7 @@ nav ul li a:hover {
 
 .tabs-content {
     padding: 2rem 1.5rem;
+    min-height: 407px;
 }
 
 .content.live h3 {
@@ -204,8 +204,9 @@ nav ul li a:hover {
 .content.live p {
     font-size: 1.2rem;
     line-height: 1.5;
-    color: #FFFFFF;
+    color: #FD84BA;
     font-family: 'Intel One Mono', monospace;
+    padding-left: 40px;
 }
 
 .content {
