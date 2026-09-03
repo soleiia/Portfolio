@@ -193,12 +193,28 @@ nav ul li a:hover {
     padding: 2rem 1.5rem;
 }
 
+.content.live h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #E02434;
+    font-family: 'Instrument Serif', serif;
+    text-align: center;
+}
+
+.content.live p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #FFFFFF;
+    font-family: 'Intel One Mono', monospace;
+}
+
 .content {
     display: none;
 }
 
 .button.live {
     background: #FD84BA;
+    font-family: 'Intel One Mono', monospace;
 }
 
 .content.live {
