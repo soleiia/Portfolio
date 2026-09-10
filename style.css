@@ -321,11 +321,11 @@ nav ul li a:hover {
     font-size: 45px;
 }
 
-/* Custom CSS for Adobe Animate Logo */
+
 .animate-logo {
     width: 45px;
     height: 45px;
-    background-color: #FF0C1E; /* Animate Red */
+    background-color: #FF0C1E; 
     color: #FFFFFF;
     font-family: Arial, sans-serif;
     font-weight: bold;
@@ -337,7 +337,7 @@ nav ul li a:hover {
 }
 
 .tech-item span {
-    font-family: 'Inter Tight', sans-serif; /* Standard font for labels */
+    font-family: 'Inter Tight', sans-serif; 
     font-size: 0.95rem;
     color: #555;
     text-align: center;
