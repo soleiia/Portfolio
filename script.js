@@ -34,31 +34,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
  
     revealElements.forEach(el => observer.observe(el));
-
-const projects = [
+ 
+    const projects = [
         {
-            title: "Para Po! Application",
+            title: "Para Po!",
             badge: "OJT",
-            image: "linear-gradient(135deg, #FD84BA, #E02434)",
+            image: "url(images/parapopic.png)",
             longDescription: "Led the full stack development of Para Po!, a mobile app designed to help commuters, especially those who are using public transportation to travel to an area that they are not familiar with.",
             tags: ["Flutter", "Dart", "SQLite"],
             link: "https://github.com/soleiia/ParaPoApp"
         },
         {
             title: "CTRL + Life UI",
-            badge: "SCHOOL",
-            image: "url('/images/ctrllifeUI.png')",
+            badge: "School - SHS",
+            image: "url('images/ctrllifeUI.png')",
             longDescription: "Designed the UI of CTRL + Life, a visual novel incorporating the lessons in the subject Life and Career Skills in DepEd’s new SHS curriculum to enhance the students' learning experience.",
-            tags: ["Figma", "UI design", "Research"],
-            link: "https://www.figma.com/proto/fTja07Gwg4NdqT9WRdVISN/Ren-Py-GUI-Demo---CTRL---LIFE?node-id=0-1&t=o3vpjAN1y1HiOEvC-1"
+            tags: ["Figma", "UI Design"],
+            link: "https://www.figma.com/proto/fTja07Gwg4NdqT9WRdVISN/Ren-Py-GUI-Demo---CTRL---LIFE?node-id=0-1&t=LcKnNKqKvnKrjzBp-1"
         },
         {
             title: "Pizza Panic!",
-            badge: "SCHOOL",
-            image: "url('/images/pizzapanicUI.png')",
-            longDescription: "Programmed and animated Pizza Panic!, a drag and drop pizza game created in adobe animate.",
-            tags: ["Adobe Animate", "ActionScript", "Animation", "Performance task"],
-            link: "https://drive.google.com/drive/u/1/folders/15tUsZdX4fCPHHPdGctCXfPtqid0LUCdb"
+            badge: "School - SHS",
+            image: "url('images/pizzapanicUI.png')",
+            longDescription: "Programmed, created the elements, and animated Pizza Panic!, a drag and drop pizza game created in Adobe Animate.",
+            tags: ["Adobe Animate", "ActionScript", "Animation", "Drawing"],
+            link: "https://drive.google.com/drive/folders/1XKEbUrFXbSpYimAr1GUQvBI_eWnR16Dz?usp=sharing"
         }
     ];
  
@@ -66,6 +66,36 @@ const projects = [
     if (!pcTrack) {
         console.error("Project carousel: #pcTrack not found in the page.");
         return;
+    }
+ 
+    // A single lightbox shared by all cards, for viewing the full image.
+    let pcLightbox = document.getElementById("pcLightbox");
+    if (!pcLightbox) {
+        pcLightbox = document.createElement("div");
+        pcLightbox.className = "pc-lightbox";
+        pcLightbox.id = "pcLightbox";
+        pcLightbox.innerHTML = `
+            <button class="pc-lightbox__close" aria-label="Close image">&times;</button>
+            <div class="pc-lightbox__frame"></div>
+        `;
+        document.body.appendChild(pcLightbox);
+ 
+        pcLightbox.addEventListener("click", (e) => {
+            if (e.target === pcLightbox) closeLightbox();
+        });
+        pcLightbox.querySelector(".pc-lightbox__close").addEventListener("click", closeLightbox);
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeLightbox();
+        });
+    }
+ 
+    function openLightbox(image) {
+        pcLightbox.querySelector(".pc-lightbox__frame").style.backgroundImage = image;
+        pcLightbox.classList.add("is-open");
+    }
+ 
+    function closeLightbox() {
+        pcLightbox.classList.remove("is-open");
     }
  
     projects.forEach((project) => {
@@ -77,7 +107,15 @@ const projects = [
                 <div class="pc-card__face pc-card__face--front">
                     <div class="pc-card__shine"></div>
                     ${project.badge ? `<div class="pc-card__badge">${project.badge}</div>` : ""}
-                    <div class="pc-card__image" style="background:${project.image}"></div>
+                    <div class="pc-card__image" style="background-image:${project.image}">
+                        <span class="pc-card__zoom" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="7"/>
+                                <path d="M11 8v6M8 11h6"/>
+                                <path d="M21 21l-4.35-4.35"/>
+                            </svg>
+                        </span>
+                    </div>
                     <div class="pc-card__text">
                         <p class="pc-card__title">${project.title}</p>
                     </div>
@@ -112,6 +150,12 @@ const projects = [
             card.classList.toggle("is-flipped");
         });
  
+        // Clicking the image opens the full, uncropped image instead of flipping the card.
+        card.querySelector(".pc-card__image").addEventListener("click", (e) => {
+            e.stopPropagation();
+            openLightbox(project.image);
+        });
+ 
         // The front arrow button opens the project link without flipping the card.
         card.querySelector(".pc-card__link").addEventListener("click", (e) => {
             e.stopPropagation();
@@ -139,4 +183,3 @@ const projects = [
     if (pcPrev) pcPrev.addEventListener("click", () => pcScroll(-1));
     if (pcNext) pcNext.addEventListener("click", () => pcScroll(1));
 });
- 
