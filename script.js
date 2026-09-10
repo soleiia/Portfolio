@@ -40,3 +40,4 @@ tabs.addEventListener('click', (e) => {
 
     revealElements.forEach(el => observer.observe(el));
 });
+
