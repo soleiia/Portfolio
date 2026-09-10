@@ -732,6 +732,22 @@ nav ul li a:hover {
     100% { background-position: 200% 0; }
 }
 
+#graphic-design {
+    background: linear-gradient(#FD84BA, #FFF);
+}
+
+.projects-heading2 {
+    color: #E02434;
+    font-family: 'Luxurious Script', cursive;
+    font-size: 72px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.projects-heading2 span {
+    color: #FFF;
+}
+
 #graphic-design .projects-inner {
     gap: 5px;
 }
