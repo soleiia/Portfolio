@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- MODAL POPUP LOGIC ---
+    const contactBtn = document.getElementById('contactBtn');
+    const contactModal = document.getElementById('contactModal');
+    const closeContactBtn = document.getElementById('closeContactBtn');
+
+    if (contactBtn && contactModal && closeContactBtn) {
+        // Open Modal
+        contactBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevents the link from jumping to the top of the page
+            contactModal.classList.add('active');
+        });
+
+        // Close Modal via X button
+        closeContactBtn.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+
+        // Close Modal by clicking outside of the white box
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+    }
+
+    // --- REVEAL ELEMENTS LOGIC ---
     const revealElements = document.querySelectorAll('.bg-folder, .c-folder, .id-badge');
     const tabs = document.querySelector('.tabs');
     const btns = document.querySelectorAll('.button');
@@ -35,39 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
     revealElements.forEach(el => observer.observe(el));
  
-    const contactOverlay = document.getElementById('contactModalOverlay');
-    const openContactBtn = document.getElementById('openContactModal');
-    const closeContactBtn = document.getElementById('closeContactModal');
- 
-    function openContactModal(e) {
-        if (e) e.preventDefault();
-        if (!contactOverlay) return;
-        contactOverlay.classList.add('is-open');
-        document.body.classList.add('modal-open');
-    }
- 
-    function closeContactModal() {
-        if (!contactOverlay) return;
-        contactOverlay.classList.remove('is-open');
-        document.body.classList.remove('modal-open');
-    }
- 
-    if (openContactBtn) openContactBtn.addEventListener('click', openContactModal);
-    if (closeContactBtn) closeContactBtn.addEventListener('click', closeContactModal);
- 
-    if (contactOverlay) {
-        // Clicking the dark backdrop (not the card itself) closes the modal.
-        contactOverlay.addEventListener('click', (e) => {
-            if (e.target === contactOverlay) closeContactModal();
-        });
-    }
- 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && contactOverlay && contactOverlay.classList.contains('is-open')) {
-            closeContactModal();
-        }
-    });
-
+    // --- PROJECTS CAROUSEL LOGIC ---
     const projects = [
         {
             title: "Para Po!",
@@ -217,12 +211,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pcNext) pcNext.addEventListener("click", () => pcScroll(1));
 });
 
+
+// --- FORM VALIDATION & SUBMISSION LOGIC ---
 (function () {
   "use strict";
   /*
-   * Contact form validation
+   * Form Validation
    */
- 
+
   // Fetch all the forms we want to apply custom validation styles to
   const forms = document.querySelectorAll(".needs-validation");
   const result = document.getElementById("result");
@@ -234,13 +230,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
- 
+
           form.querySelectorAll(":invalid")[0].focus();
         } else {
           /*
            * Form Submission using fetch()
            */
- 
+
           const formData = new FormData(form);
           event.preventDefault();
           event.stopPropagation();
@@ -250,8 +246,8 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const json = JSON.stringify(object);
           result.innerHTML = "Please wait...";
-          result.classList.remove("success", "error");
- 
+          result.style.color = "#888"; // Reset color to neutral while loading
+
           fetch("https://api.web3forms.com/submit", {
             method: "POST",
             headers: {
@@ -264,24 +260,23 @@ document.addEventListener('DOMContentLoaded', () => {
               let json = await response.json();
               if (response.status == 200) {
                 result.innerHTML = json.message;
-                result.classList.add("success");
+                result.style.color = "#28a745"; // Success green
               } else {
                 console.log(response);
                 result.innerHTML = json.message;
-                result.classList.add("error");
+                result.style.color = "#E02434"; // Your brand red for errors
               }
             })
             .catch((error) => {
               console.log(error);
               result.innerHTML = "Something went wrong!";
-              result.classList.add("error");
+              result.style.color = "#E02434"; // Your brand red for errors
             })
             .then(function () {
               form.reset();
               form.classList.remove("was-validated");
               setTimeout(() => {
-                result.innerHTML = "";
-                result.classList.remove("success", "error");
+                result.style.display = "none";
               }, 5000);
             });
         }
