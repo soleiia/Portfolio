@@ -1,22 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- MODAL POPUP LOGIC ---
     const contactBtn = document.getElementById('contactBtn');
     const contactModal = document.getElementById('contactModal');
     const closeContactBtn = document.getElementById('closeContactBtn');
 
     if (contactBtn && contactModal && closeContactBtn) {
-        // Open Modal
+    
         contactBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevents the link from jumping to the top of the page
+            e.preventDefault(); 
             contactModal.classList.add('active');
         });
 
-        // Close Modal via X button
         closeContactBtn.addEventListener('click', () => {
             contactModal.classList.remove('active');
         });
 
-        // Close Modal by clicking outside of the white box
         contactModal.addEventListener('click', (e) => {
             if (e.target === contactModal) {
                 contactModal.classList.remove('active');
@@ -24,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- REVEAL ELEMENTS LOGIC ---
     const revealElements = document.querySelectorAll('.bg-folder, .c-folder, .id-badge');
     const tabs = document.querySelector('.tabs');
     const btns = document.querySelectorAll('.button');
@@ -52,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // reveal once, stays visible after
+                observer.unobserve(entry.target); 
             }
         });
     }, {
@@ -61,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
  
     revealElements.forEach(el => observer.observe(el));
  
-    // --- PROJECTS CAROUSEL LOGIC ---
     const projects = [
         {
             title: "Para Po!",
@@ -75,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             title: "CTRL + Life UI",
             badge: "School - SHS",
             image: "url('images/ctrllifeUI.png')",
-            longDescription: "Designed the UI of CTRL + Life, a visual novel incorporating the lessons in the subject Life and Career Skills in DepEd’s new SHS curriculum to enhance the students' learning experience.",
+            longDescription: "Designed the UI of CTRL + Life, a visual novel incorporating the lessons in the subject Life and Career Skills in DepEd\u2019s new SHS curriculum to enhance the students' learning experience.",
             tags: ["Figma", "UI Design"],
             link: "https://www.figma.com/proto/fTja07Gwg4NdqT9WRdVISN/Ren-Py-GUI-Demo---CTRL---LIFE?node-id=0-1&t=LcKnNKqKvnKrjzBp-1"
         },
@@ -95,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
  
-    // A single lightbox shared by all cards, for viewing the full image.
     let pcLightbox = document.getElementById("pcLightbox");
     if (!pcLightbox) {
         pcLightbox = document.createElement("div");
@@ -172,24 +166,20 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
  
-        // Clicking the card flips it to reveal more info.
         card.addEventListener("click", () => {
             card.classList.toggle("is-flipped");
         });
  
-        // Clicking the image opens the full, uncropped image instead of flipping the card.
         card.querySelector(".pc-card__image").addEventListener("click", (e) => {
             e.stopPropagation();
             openLightbox(project.image);
         });
  
-        // The front arrow button opens the project link without flipping the card.
         card.querySelector(".pc-card__link").addEventListener("click", (e) => {
             e.stopPropagation();
             window.open(project.link, "_blank");
         });
  
-        // The back "Visit project" button also opens the link.
         card.querySelector(".pc-card__visit").addEventListener("click", (e) => {
             e.stopPropagation();
             window.open(project.link, "_blank");
@@ -215,14 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // --- FORM VALIDATION & SUBMISSION LOGIC ---
 (function () {
   "use strict";
-  /*
-   * Form Validation
-   */
 
-  // Fetch all the forms we want to apply custom validation styles to
+ 
   const forms = document.querySelectorAll(".needs-validation");
   const result = document.getElementById("result");
-  // Loop over them and prevent submission
   Array.prototype.slice.call(forms).forEach(function (form) {
     form.addEventListener(
       "submit",
@@ -233,9 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           form.querySelectorAll(":invalid")[0].focus();
         } else {
-          /*
-           * Form Submission using fetch()
-           */
 
           const formData = new FormData(form);
           event.preventDefault();
@@ -246,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
           });
           const json = JSON.stringify(object);
           result.innerHTML = "Please wait...";
-          result.style.color = "#888"; // Reset color to neutral while loading
+          result.style.color = "#888"; 
 
           fetch("https://api.web3forms.com/submit", {
             method: "POST",
@@ -260,17 +243,17 @@ document.addEventListener('DOMContentLoaded', () => {
               let json = await response.json();
               if (response.status == 200) {
                 result.innerHTML = json.message;
-                result.style.color = "#28a745"; // Success green
+                result.style.color = "#28a745"; 
               } else {
                 console.log(response);
                 result.innerHTML = json.message;
-                result.style.color = "#E02434"; // Your brand red for errors
+                result.style.color = "#E02434"; 
               }
             })
             .catch((error) => {
               console.log(error);
               result.innerHTML = "Something went wrong!";
-              result.style.color = "#E02434"; // Your brand red for errors
+              result.style.color = "#E02434"; 
             })
             .then(function () {
               form.reset();
@@ -286,5 +269,3 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   });
 })();
-
-
