@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+    const idBadge = document.getElementById('idBadge');
+
+    const ID_BADGE_LIGHT = 'images/LightID.png';
+    const ID_BADGE_DARK = 'images/DarkID.png';
+
+    function applyTheme(isDark) {
+        document.documentElement.classList.toggle('dark-mode', isDark);
+        if (idBadge) {
+            idBadge.src = isDark ? ID_BADGE_DARK : ID_BADGE_LIGHT;
+        }
+        if (themeToggle) {
+            themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        }
+    }
+
+    let storedTheme = null;
+    try {
+        storedTheme = localStorage.getItem('theme');
+    } catch (e) {}
+
+    applyTheme(storedTheme === 'dark');
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = !document.documentElement.classList.contains('dark-mode');
+            applyTheme(isDark);
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) {}
+        });
+    }
+
     const contactBtn = document.getElementById('contactBtn');
     const contactModal = document.getElementById('contactModal');
     const closeContactBtn = document.getElementById('closeContactBtn');

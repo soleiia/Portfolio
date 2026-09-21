@@ -8,6 +8,7 @@ body {
     line-height: 1.6;
     background: linear-gradient(#FD84BA, #FFF);
     color: #FFFFFF;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 nav {
@@ -21,6 +22,7 @@ nav {
     min-height: 100px;
     z-index: 1000;
     padding: 10px 20px;
+    transition: background-color 0.4s ease;
 }
 
 nav .logo {
@@ -69,9 +71,48 @@ nav ul li a:hover {
     color: #E02434;
 }
 
+.theme-toggle {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    background: transparent;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: #FFFFFF;
+    color: #E02434;
+    transform: rotate(15deg);
+}
+
+.theme-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.theme-icon-sun {
+    display: none;
+}
+
+html.dark-mode .theme-icon-moon {
+    display: none;
+}
+
+html.dark-mode .theme-icon-sun {
+    display: block;
+}
+
 .about-bg {
     background-color: #FFFFFF;
     padding: 40px 0;
+    transition: background-color 0.4s ease;
 }
 
 #headerngtaon {
@@ -175,6 +216,7 @@ nav ul li a:hover {
     box-shadow: 0 15px 35px rgba(224, 36, 52, 0.1); 
     display: flex;
     flex-direction: column;
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .terminal-header {
@@ -183,6 +225,7 @@ nav ul li a:hover {
     align-items: center;
     padding: 0 20px;
     border-bottom: 1px solid #E5E5E5;
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .terminal-dots {
@@ -283,6 +326,7 @@ nav ul li a:hover {
     padding: 25px 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .tech-category h4 {
@@ -346,11 +390,13 @@ nav ul li a:hover {
     grid-template-columns: 1fr 1fr;
     column-gap: 2rem;
     background-color: #FFF;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .projects {
     padding: 70px 5%;
     background: linear-gradient(#FFF, #FD84BA);
+    transition: background 0.4s ease;
 }
  
 .projects-inner {
@@ -952,7 +998,7 @@ nav ul li a:hover {
 footer {
     align-items: center;
     background-color: #E02434;
- 
+    transition: background-color 0.4s ease;
 }
  
 footer h5{
@@ -1081,6 +1127,279 @@ footer p{
     text-align: center;
 }
 
+html.dark-mode body {
+    background: linear-gradient(#3B0A18, #140508);
+    color: #F2E4E8;
+}
+
+html.dark-mode nav {
+    background-color: #7E1421;
+}
+
+html.dark-mode nav ul li a:hover {
+    color: #FFB3C7;
+}
+
+html.dark-mode .contact-btn {
+    background-color: #C31F2E;
+}
+
+html.dark-mode .contact-btn:hover {
+    background-color: #FFB3C7;
+    color: #3B0A18;
+}
+
+html.dark-mode .theme-toggle:hover {
+    background: #FFB3C7;
+    color: #3B0A18;
+}
+
+html.dark-mode #headerngtaon {
+    color: #FF8FA3;
+}
+
+html.dark-mode .bg-folder {
+    background-image: url('images/FolderDark.png');
+}
+
+html.dark-mode .c-folder h3 {
+    color: #FF8FA3;
+}
+
+html.dark-mode .c-folder p {
+    color: #E0728F;
+}
+
+html.dark-mode .about-bg {
+    background-color: #1C0A10;
+}
+
+html.dark-mode .About-Me {
+    background-color: #1C0A10;
+    color: #FF8FA3;
+}
+
+html.dark-mode .terminal-window {
+    background: #241017;
+    border-color: #7E1421;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+html.dark-mode .terminal-header {
+    background: #2E141C;
+    border-bottom-color: #3E1C25;
+}
+
+html.dark-mode .button {
+    color: #B99AA3;
+}
+
+html.dark-mode .button:hover:not(.live) {
+    color: #FF8FA3;
+    background: rgba(255, 143, 163, 0.08);
+}
+
+html.dark-mode .button.live {
+    background: #241017;
+    color: #FF8FA3;
+    border-top-color: #E0728F;
+}
+
+html.dark-mode .terminal-line {
+    color: #E8DADE;
+}
+
+html.dark-mode .prompt {
+    color: #FF8FA3;
+}
+
+html.dark-mode .keyword {
+    color: #E0728F;
+}
+
+html.dark-mode .terminal-text p {
+    color: #D6C4CA;
+}
+
+html.dark-mode .tech-category {
+    background: #2E141C;
+    border-color: #3E1C25;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+html.dark-mode .tech-category h4 {
+    color: #FF8FA3;
+}
+
+html.dark-mode .tech-item span {
+    color: #D6C4CA;
+}
+
+html.dark-mode .projects {
+    background: linear-gradient(#140508, #3B0A18);
+}
+
+html.dark-mode .projects-heading {
+    color: #FF8FA3;
+}
+
+html.dark-mode .projects-heading span {
+    color: #E0728F;
+}
+
+html.dark-mode .pc-arrow {
+    border-color: #FFB3C7;
+    color: #FFB3C7;
+}
+
+html.dark-mode .pc-arrow:hover {
+    background: #FFB3C7;
+    color: #3B0A18;
+}
+
+html.dark-mode .pc-card__face {
+    box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.5);
+}
+
+html.dark-mode .pc-card:hover .pc-card__face {
+    box-shadow: 0 16px 26px -6px rgba(0, 0, 0, 0.6);
+}
+
+html.dark-mode .pc-card__face--front {
+    background: #2E141C;
+}
+
+html.dark-mode .pc-card__title {
+    color: #FF8FA3;
+}
+
+html.dark-mode .pc-card:hover .pc-card__title {
+    color: #FFB3C7;
+}
+
+html.dark-mode .pc-card__description {
+    color: #D6C4CA;
+}
+
+html.dark-mode .pc-card__tag-preview {
+    color: #E0728F;
+}
+
+html.dark-mode .pc-card__badge {
+    background: #C31F2E;
+}
+
+html.dark-mode .pc-card__face--back {
+    background: #7E1421;
+}
+
+html.dark-mode .pc-card__visit {
+    background: #C31F2E;
+}
+
+html.dark-mode .pc-lightbox__frame {
+    background-color: #241017;
+}
+
+html.dark-mode .pc-lightbox__close {
+    background: #FFB3C7;
+    color: #3B0A18;
+}
+
+html.dark-mode #graphic-design {
+    background: linear-gradient(#3B0A18, #140508);
+}
+
+html.dark-mode .projects-heading2 {
+    color: #FF8FA3;
+}
+
+html.dark-mode .projects-heading2 span {
+    color: #D6C4CA;
+}
+
+html.dark-mode .graphic-paper-bg {
+    background-image: url('images/paperDark.png');
+    filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.5));
+}
+
+html.dark-mode .graphic-img {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+html.dark-mode .contact-modal-overlay {
+    background: rgba(5, 1, 2, 0.85);
+}
+
+html.dark-mode .contact-modal-content {
+    background: #241017;
+    color: #E8DADE;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+html.dark-mode .contact-title {
+    color: #FF8FA3;
+}
+
+html.dark-mode .contact-subtitle {
+    color: #B99AA3;
+}
+
+html.dark-mode .close-modal-btn {
+    color: #FF8FA3;
+}
+
+html.dark-mode .close-modal-btn:hover {
+    color: #FFB3C7;
+}
+
+html.dark-mode .custom-form label {
+    color: #D6C4CA;
+}
+
+html.dark-mode .custom-form input,
+html.dark-mode .custom-form textarea {
+    background: #2E141C;
+    border-color: #3E1C25;
+    color: #F2E4E8;
+}
+
+html.dark-mode .custom-form input::placeholder,
+html.dark-mode .custom-form textarea::placeholder {
+    color: #8C6E77;
+}
+
+html.dark-mode .custom-form input:focus,
+html.dark-mode .custom-form textarea:focus {
+    border-color: #E0728F;
+}
+
+html.dark-mode .submit-btn {
+    background: #C31F2E;
+}
+
+html.dark-mode .submit-btn:hover {
+    background: #E0728F;
+}
+
+html.dark-mode .invalid-feedback,
+html.dark-mode .empty-feedback {
+    color: #FF8FA3;
+}
+
+html.dark-mode .is-invalid,
+html.dark-mode .was-validated :invalid {
+    border-color: #FF8FA3 !important;
+}
+
+html.dark-mode footer {
+    background-color: #7E1421;
+}
+
+html.dark-mode .icon svg {
+    fill: #E0728F;
+}
+
 @media (max-width: 768px) {
     nav {
         justify-content: center;
@@ -1109,6 +1428,16 @@ footer p{
 
     .contact-btn {
         padding: 8px 16px;
+    }
+
+    .theme-toggle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .theme-icon {
+        width: 20px;
+        height: 20px;
     }
 
     #about {
